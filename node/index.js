@@ -146,10 +146,7 @@ platformAPI.associate = async (isIPv6) => {
 
 async function loadModule() {
 	try {
-		console.log('before load')
 		const customConfig = await import('./config.js');
-		console.log('after load')
-		console.log(JSON.stringify(customConfig))
 
 		if (customConfig.useCustomOutbound) {
 			globalConfig.outbounds = customConfig.outbounds;
