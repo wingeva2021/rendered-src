@@ -42,10 +42,6 @@
       },
       "streamSettings": {
         "network": "ws"
-        // "wsSettings": {
-        //   "path": "/node-vless"
-        // }
-        // "security": "tls"
       },
       "tag": "zizi-ws"
     },
