@@ -161,5 +161,5 @@ async function loadModule() {
 	  console.error('Failed to load the module', err);
 	}
 }
-
-loadModule();
+setConfigFromEnv({});
+//loadModule();
