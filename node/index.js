@@ -7,7 +7,7 @@ import net from 'net';
 import WebSocket from 'ws';
 import {createSocket as createUDPSocket} from 'dgram';
 
-import {globalConfig, platformAPI, setConfigFromEnv, vlessOverWSHandler, getVLESSConfig} from './worker-with-socks5-experimental.js';
+import {globalConfig, platformAPI, setConfigFromEnv, vlessOverWSHandler, getVLESSConfig} from '../src/worker-with-socks5-experimental.js';
 
 // Create an HTTP server
 const server = http.createServer((req, res) => {
