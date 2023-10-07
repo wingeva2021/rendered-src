@@ -13,6 +13,10 @@ jobs:
       -
         name: Checkout
         uses: actions/checkout@v3
+      - 
+        name: Copy directory
+        run: |
+          cp -R ./src ./node/src
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v3
