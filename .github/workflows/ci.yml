@@ -17,6 +17,7 @@ jobs:
         name: Copy directory
         run: |
           cp -R ./src ./node/src
+          ls
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -35,4 +36,4 @@ jobs:
         with:
           context: ./node
           push: true
-          tags: user/app:latest
+          tags: coondia/rendered:latest
