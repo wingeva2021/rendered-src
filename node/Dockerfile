@@ -7,9 +7,6 @@ COPY . .
 
 RUN npm install
 
-RUN chmod +x ./setup.sh  
-
-RUN ./setup.sh
 
 EXPOSE 8080
 
