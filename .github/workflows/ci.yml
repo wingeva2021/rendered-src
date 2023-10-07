@@ -13,6 +13,11 @@ jobs:
       -
         name: Checkout
         uses: actions/checkout@v3
+      
+      - name: Copy src
+        run: |
+          cp -R ./src ./node/src
+          ls node
 
       -
         name: Set up QEMU
