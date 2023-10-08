@@ -37,4 +37,4 @@ jobs:
         with:
           context: ./node
           push: true
-          tags: coondia/rendered:latest
+          tags: ${{ secrets.DOCKER_TAG }}
