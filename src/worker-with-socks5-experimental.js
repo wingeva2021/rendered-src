@@ -11,7 +11,7 @@ export let globalConfig = {
 
 	// Since Cloudflare Worker does not support UDP outbound, we may try DNS over TCP.
 	// Set to an empty string to disable UDP to TCP forwarding for DNS queries.
-	dnsTCPServer: "8.8.4.4",
+	dnsTCPServer: "",//"8.8.4.4",
 
 	// The order controls where to send the traffic after the previous one fails
 	outbounds: [
