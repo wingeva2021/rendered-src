@@ -59,7 +59,7 @@ const outboundImpl = {
 			const udpClient = await /** @type {NonNullable<typeof platformAPI.associate>} */(platformAPI.associate)(vlessRequest.addressType == VlessAddrType.IPv6);
 			const writableStream = makeWritableUDPStream(udpClient, vlessRequest.addressRemote, vlessRequest.portRemote, context.log);
 			const readableStream = makeReadableUDPStream(udpClient, context.log);
-			context.log(`Connected to UDP://${vlessRequest.addressRemote}:${vlessRequest.portRemote}`);
+			//context.log(`Connected to UDP://${vlessRequest.addressRemote}:${vlessRequest.portRemote}`);
 			await writeFirstChunk(writableStream, context.firstChunk);
 			return {
 				readableStream,
@@ -70,12 +70,12 @@ const outboundImpl = {
 		let addressTCP = vlessRequest.addressRemote;
 		if (context.forwardDNS) {
 			addressTCP = globalConfig.dnsTCPServer;
-			context.log(`Redirect DNS request sent to UDP://${vlessRequest.addressRemote}:${vlessRequest.portRemote}`);
+			//context.log(`Redirect DNS request sent to UDP://${vlessRequest.addressRemote}:${vlessRequest.portRemote}`);
 		}
 
 		const tcpSocket = await platformAPI.connect(addressTCP, vlessRequest.portRemote);
 		tcpSocket.closed.catch(error => context.log('[freedom] tcpSocket closed with error: ', error.message));
-		context.log(`Connecting to tcp://${addressTCP}:${vlessRequest.portRemote}`);
+		//context.log(`Connecting to tcp://${addressTCP}:${vlessRequest.portRemote}`);
 		await writeFirstChunk(tcpSocket.writable, context.firstChunk);
 		return {
 			readableStream: tcpSocket.readable, 
@@ -158,10 +158,10 @@ const outboundImpl = {
 				wsToVlessServer.send(chunk);
 			},
 			close() {
-				context.log(`Vless Websocket closed`);
+				context.log(`Websocket closed`);
 			},
 			abort(reason) {
-				console.error(`Vless Websocket aborted`, reason);
+				console.error(`Websocket aborted`, reason);
 			},
 		});
 
