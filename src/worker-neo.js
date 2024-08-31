@@ -8,7 +8,7 @@
 export const globalConfig = {
 	userID: 'd342d11e-d424-4583-b36e-524ab1f0afa4',
 
-	/** Time to wait before an outbound Websocket connection is considered timeout, in ms. */
+	/** Time to wait before an outbound Websocket connection is considered timeout, in ms.  */
 	openWSOutboundTimeout: 10000,
 
 	/**
