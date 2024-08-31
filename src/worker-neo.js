@@ -266,7 +266,7 @@ function getOutbound(curPos) {
 		}
 
 		default:
-			throw new Error(`Unknown outbound protocol: ${outbound.protocol}`);
+			throw new Error(`Unknown outbound proto: ${outbound.protocol}`);
 	}
 
 	curPos.serverIndex++;
