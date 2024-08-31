@@ -91,7 +91,7 @@ const outboundImpl = {
 
 		const tcpSocket = await platformAPI.connect(args.proxyServer, portDest);
 		tcpSocket.closed.catch(error => context.log('[forward] tcpSocket closed with error: ', error.message));
-		context.log(`Forwarding tcp://${vlessRequest.addressRemote}:${vlessRequest.portRemote} to ${args.proxyServer}:${portDest}`);
+		//context.log(`Forwarding tcp://${vlessRequest.addressRemote}:${vlessRequest.portRemote} to ${args.proxyServer}:${portDest}`);
 		await writeFirstChunk(tcpSocket.writable, context.firstChunk);
 		return {
 			readableStream: tcpSocket.readable, 
@@ -104,7 +104,7 @@ const outboundImpl = {
 	'socks': (/** @type {import('./worker-neo').Socks5InstanceArgs} */ socks) => async (vlessRequest, context) => {
 		const tcpSocket = await platformAPI.connect(socks.address, socks.port);
 		tcpSocket.closed.catch(error => context.log('[socks] tcpSocket closed with error: ', error.message));
-		context.log(`Connecting to ${vlessRequest.isUDP ? 'UDP' : 'TCP'}://${vlessRequest.addressRemote}:${vlessRequest.portRemote} via socks5 ${socks.address}:${socks.port}`);
+		//context.log(`Connecting to ${vlessRequest.isUDP ? 'UDP' : 'TCP'}://${vlessRequest.addressRemote}:${vlessRequest.portRemote} via socks5 ${socks.address}:${socks.port}`);
 		await socks5Connect(tcpSocket, socks.user, socks.pass, vlessRequest.addressType, vlessRequest.addressRemote, vlessRequest.portRemote, context.log);
 		await writeFirstChunk(tcpSocket.writable, context.firstChunk);
 		return {
@@ -130,7 +130,7 @@ const outboundImpl = {
 		if (vless.streamSettings.wsSettings && vless.streamSettings.wsSettings.path) {
 			wsURL = wsURL + vless.streamSettings.wsSettings.path;
 		}
-		context.log(`Connecting to ${vlessRequest.isUDP ? 'UDP' : 'TCP'}://${vlessRequest.addressRemote}:${vlessRequest.portRemote} via vless ${wsURL}`);
+		//context.log(`Connecting to ${vlessRequest.isUDP ? 'UDP' : 'TCP'}://${vlessRequest.addressRemote}:${vlessRequest.portRemote} via vless ${wsURL}`);
 
 		const wsToVlessServer = platformAPI.newWebSocket(wsURL);
 		/** @type {Promise<void>} */
