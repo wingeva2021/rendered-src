@@ -175,11 +175,11 @@ const outboundImpl = {
 			const addtionalBytes = firstChunk[1];
 
 			if (responseVersion > 0) {
-				context.log('Warning: unexpected vless version: ${responseVersion}, only supports 0.');
+				//context.log('Warning: unexpected vless version: ${responseVersion}, only supports 0.');
 			}
 
 			if (addtionalBytes > 0) {
-				context.log('Warning: ignored ${addtionalBytes} byte(s) of additional information in the response.');
+				//context.log('Warning: ignored ${addtionalBytes} byte(s) of additional information in the response.');
 			}
 
 			return firstChunk.slice(2 + addtionalBytes);
@@ -568,7 +568,7 @@ export function vlessOverWSHandler(webSocket, earlyDataHeader) {
 				const randTag = Math.round(Math.random()*1000000).toString(16).padStart(5, '0');
 				logPrefix = `${vlessHeader.addressRemote}:${vlessHeader.portRemote} ${randTag} ${vlessHeader.isUDP ? 'UDP' : 'TCP'}`;
 				const firstPayloadLen = chunk.byteLength - vlessHeader.rawDataIndex;
-				log(`First payload length = ${firstPayloadLen}`);
+				//log(`First payload length = ${firstPayloadLen}`);
 				if (firstPayloadLen > 0) {
 					controller.enqueue(chunk.slice(vlessHeader.rawDataIndex));
 				}
@@ -1269,7 +1269,7 @@ async function socks5Connect(socket, username, password, addressType, addressRem
 	}
 	const socksRequest = new Uint8Array([5, 1, 0, ...DSTADDR, portRemote >> 8, portRemote & 0xff]);
 	await writer.write(socksRequest);
-	log('Socks5: Sent request');
+	//log('Socks5: Sent request');
 
 	res = (await reader.read()).value;
 	// Response format (Socks Server -> Worker):
@@ -1279,7 +1279,7 @@ async function socks5Connect(socket, username, password, addressType, addressRem
 	// | 1  |  1  | X'00' |  1   | Variable |    2     |
 	// +----+-----+-------+------+----------+----------+
 	if (typeof res !== 'undefined' && res[1] === 0x00) {
-		log("Socks5: Connection opened");
+		//log("Socks5: Connection opened");
 	} else {
 		throw new Error("Connection failed");
 	}
